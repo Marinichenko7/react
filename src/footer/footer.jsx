@@ -4,7 +4,7 @@ import '../App.css';
 const Footer = () => {
     return (
         <footer className="footer">
-		Текст который мы вставили после того, как проект был залит на github
+		Это footer сайта
         </footer>
     )
 }
