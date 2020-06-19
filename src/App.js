@@ -1,16 +1,16 @@
 import React from 'react';
 import './App.css';
-import Header from './header/header';
-import Nav from './nav/nav';
-import UserPage from './content/user_page';
-import Footer from './footer/footer';
+import Header from './header/Header';
+import Nav from './nav/Nav';
+import Profile from './content/Profile';
+import Footer from './footer/Footer';
 
 const App = () => {
   return (
     <div className="wrapper">
       <Header/>
       <Nav/>
-      <UserPage/>
+      <Profile/>
       <Footer/>
     </div>
   );

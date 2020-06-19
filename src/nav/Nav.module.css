@@ -2,22 +2,22 @@
     grid-area: nav_part;
     background-color: rgb(34, 165, 34);
 }
-.nav-items{
+.nav_items{
     list-style: none;
     padding-left: 10px;
 }
-.nav-items li{
+.nav_items li{
     margin-bottom: 5px;
 }
-.nav-items li a{
+.nav_items li a{
     text-decoration: none;
     color: white;
     font-size: 18px;
     transition: 0.2s ease-in-out;
 }
-.nav-items li a:hover{
+.nav_items li a:hover{
     text-shadow: 1px 1px 2px white;
 }
-.nav-items li:last-child{
+.nav_items li:last-child{
     margin: 25px 0;
 }

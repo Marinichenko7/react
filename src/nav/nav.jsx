@@ -1,10 +1,10 @@
 import React from 'react';
-import './nav.css';
+import st from './Nav.module.css';
 
 const Nav = () => {
     return (
-        <nav className="nav">
-            <ul className="nav-items">
+        <nav className={st.nav}>
+            <ul className={st.nav_items}>
                 <li><a href="#">Profile</a></li>
                 <li><a href="#">Messages</a></li>
                 <li><a href="#">News</a></li>
