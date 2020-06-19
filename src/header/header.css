@@ -1,0 +1,8 @@
+.header{
+    grid-area: header_part;
+    background-color: rgb(34, 165, 34);
+}
+.logo{
+    width: 50px;
+    margin: 5px;
+}
