@@ -1,0 +1,39 @@
+.title_block{
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+.user_add_post{
+    width: 100%;
+    margin-bottom: 10px;
+}
+.user_write_news{
+    padding: 10px;
+    width: 100%;
+    margin-bottom: 10px;
+    background-color: rgb(190, 190, 190);
+    border: 2px solid white;
+    height: 50px;
+}
+.user_write_news:focus{
+    outline: none !important;
+    background-color: #fff;
+    border: 2px solid rgb(34, 165, 34);
+}
+.send_news{
+    display: block;
+    margin-left: auto;
+    width: 100px;
+    padding: 5px;
+    background-color: rgb(34, 165, 34);
+    border: 0;
+    color: white;
+    font-weight: 500;
+    border: 2px solid rgb(34, 165, 34);
+    transition: .2s ease-in-out;
+}
+.send_news:hover{
+    cursor: pointer;
+    background-color: #fff;
+    color: rgb(34, 165, 34);
+    border: 2px solid rgb(34, 165, 34);
+}
