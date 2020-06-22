@@ -1,11 +1,11 @@
 import React from 'react';
 import st from './Profile.module.css';
-import Posting from "./posting/Posting";
-import Post from "./post/Post";
+import Posting from "./Posting/Posting";
+import Post from "./Post/Post";
 
 const Profile = () => {
     return (
-        <div className={st.profile}>
+        <div>
             <div className={st.background_user}>
                 <img src="https://img5.goodfon.ru/wallpaper/big/3/94/mmmmmm-n-nnnnnnnn-bbbbbbbbb-vvvvvvvv-cccccccccccccccc.jpg"></img>
             </div>

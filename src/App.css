@@ -11,4 +11,17 @@
     "nav_part user_part"
     "footer_part footer_part";
 }
-
+.header{
+    grid-area: header_part;
+    background-color: rgb(34, 165, 34);
+}
+.nav{
+    grid-area: nav_part;
+    background-color: rgb(34, 165, 34);
+}
+.content{
+    grid-area: user_part;
+}
+.footer{
+    grid-area: footer_part;
+}
