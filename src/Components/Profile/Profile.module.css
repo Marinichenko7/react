@@ -1,34 +1,3 @@
-.background_user{
-    width: 100%;
-    height: 120px;
-    position: relative;
-    overflow: hidden;
-    margin-bottom: 10px;
-}
-.background_user img{
-    position: absolute;
-    width: 100%;
-}
-.user_info{
-    display: flex;
-    margin-bottom: 10px;;
-}
-.user_pic_block{
-    display: inline;
-}
-.user_pic{
-    width: 160px;
-}
-.user_describe{
-    display: inline;
-    padding: 10px;
-}
-.user_describe div{
-    display: block;
-}
-.user_name{
-    font-size: 22px;
-}
 .posts{
     width: 80%;
 }

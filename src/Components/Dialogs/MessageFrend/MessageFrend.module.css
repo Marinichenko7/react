@@ -1,3 +1,6 @@
+.message_frend_block{
+    display: block;
+}
 .message_frend{
     display: inline-block;
     padding: 5px 15px;
