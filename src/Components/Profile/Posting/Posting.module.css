@@ -7,6 +7,7 @@
     margin-bottom: 10px;
 }
 .user_write_news{
+    box-sizing: border-box;
     padding: 10px;
     width: 100%;
     margin-bottom: 10px;
