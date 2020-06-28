@@ -26,8 +26,8 @@ const App = (props) => {
         </nav>
 
         <div className="content">
-          <Route path="/profile" render={() => <Profile posts={props.posts}/>} />
-          <Route exact path="/dialogs" render={() => <Dialogs dialogs={props.dialogs} messages={props.messages} />} />
+          <Route path="/profile" render={() => <Profile posts={props.appState.profilePage.PostsData} />} />
+          <Route exact path="/dialogs" render={() => <Dialogs dialogs={props.appState.messagePage.DialogsData} messages={props.appState.messagePage.MessagesData} />} />
           <Route path="/news" render={() => <News />} />
           <Route path="/music" render={() => <Music />} />
           <Route path="/settings" render={() => <Settings />} />
