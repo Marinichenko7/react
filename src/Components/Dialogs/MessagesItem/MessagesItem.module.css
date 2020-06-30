@@ -1,7 +1,7 @@
-.message_frend_block{
+.message_block{
     display: block;
 }
-.message_frend{
+.message{
     display: inline-block;
     padding: 5px 15px;
     border-radius: 10px;

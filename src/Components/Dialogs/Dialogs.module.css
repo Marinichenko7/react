@@ -1,14 +1,23 @@
 .columns_dialogs{
     display: flex;
     width: 100%;
-    height: 100%;
+    height: calc(100vh - 130px);
 }
 .column_dialogs{
-    width: 30%;
+    min-width: 150px;
+    width: 20%;
     border-right: 2px solid rgb(34, 165, 34);
+    overflow-y: auto;
+    padding: 0 5px;
 }
 .column_messages{
-    width: 70%;
+    min-width: 320px;
+    position: relative;
+    width: 80%;
     padding: 0 10px;
+}
+.block_message{
     font-size: 0;
+    overflow-y: auto;
+    height: calc(100% - 60px);
 }

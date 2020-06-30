@@ -1,21 +1,26 @@
 import React from 'react';
 import st from './Dialogs.module.css';
-import Dialog from './Dialog/Dialog';
-import MessageFrend from './MessageFrend/MessageFrend';
-import MessageMy from './MessageMy/MessageMy';
+import DialogsItem from './DialogsItem/DialogsItem';
+import MessagesItem from './MessagesItem/MessagesItem';
+import MessageSend from './MessageSend/MessageSend';
 
 
 const Dialogs = (props) => {
-    let DialogsItem = props.dialogs.map(dialog => <Dialog id={dialog.id} sender={dialog.sender} />);
-    let MessagesItem = props.messages.map( message => <MessageFrend sender={message.sender} text={message.text} date={message.date} />);
+    
+    let allDialogs = props.dialogData.map( (d) => <DialogsItem id={d.id} sender={d.sender} />);
+    let allMessages = props.messageData.map( (m) => <MessagesItem id={m.id} sender={m.sender} text ={m.text} date={m.date} />);
+
 
     return (
         <div className={st.columns_dialogs}>
             <div className={st.column_dialogs}>
-                { DialogsItem }
+                { allDialogs }
             </div>
             <div className={st.column_messages}>
-                { MessagesItem }
+                <div className={st.block_message}>
+                    { allMessages }
+                </div>
+                <MessageSend />
             </div>
         </div>
     )

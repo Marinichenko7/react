@@ -1,3 +1,5 @@
+import { rerenderEntireTree } from '../render';
+
 let state = {
     profilePage: {
         PostsData: [
@@ -16,9 +18,37 @@ let state = {
         ],
         MessagesData: [
             { id: 1, sender: 'Kolya', text: 'Hi! Whats up?', date: '3 sept 18:31' },
+            { id: 2, sender: 'Vitya', text: 'Hello! I`m fine. Now i have a dinner. And you?', date: '3 sept 18:33' },
+            { id: 1, sender: 'Kolya', text: 'Hi! Whats up?', date: '3 sept 18:31' },
+            { id: 2, sender: 'Vitya', text: 'Hello! I`m fine. Now i have a dinner. And you?', date: '3 sept 18:33' },
+            { id: 1, sender: 'Kolya', text: 'Hi! Whats up?', date: '3 sept 18:31' },
+            { id: 2, sender: 'Vitya', text: 'Hello! I`m fine. Now i have a dinner. And you?', date: '3 sept 18:33' },
+            { id: 1, sender: 'Kolya', text: 'Hi! Whats up?', date: '3 sept 18:31' },
+            { id: 2, sender: 'Vitya', text: 'Hello! I`m fine. Now i have a dinner. And you?', date: '3 sept 18:33' },
+            { id: 1, sender: 'Kolya', text: 'Hi! Whats up?', date: '3 sept 18:31' },
+            { id: 2, sender: 'Vitya', text: 'Hello! I`m fine. Now i have a dinner. And you?', date: '3 sept 18:33' },
+            { id: 1, sender: 'Kolya', text: 'Hi! Whats up?', date: '3 sept 18:31' },
+            { id: 2, sender: 'Vitya', text: 'Hello! I`m fine. Now i have a dinner. And you?', date: '3 sept 18:33' },
+            { id: 1, sender: 'Kolya', text: 'Hi! Whats up?', date: '3 sept 18:31' },
+            { id: 2, sender: 'Vitya', text: 'Hello! I`m fine. Now i have a dinner. And you?', date: '3 sept 18:33' },
+            { id: 1, sender: 'Kolya', text: 'Hi! Whats up?', date: '3 sept 18:31' },
             { id: 2, sender: 'Vitya', text: 'Hello! I`m fine. Now i have a dinner. And you?', date: '3 sept 18:33' }
         ]
     }
 }
+
+export let addPost = (textPost) => {
+
+    
+    let objPost = {
+        id: 5,
+        message: textPost,
+        like_count: 0,
+        share_count: 0
+    }
+    state.profilePage.PostsData.push(objPost);
+    rerenderEntireTree(state);
+}
+
 
 export default state;

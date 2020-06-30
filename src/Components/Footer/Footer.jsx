@@ -3,8 +3,8 @@ import st from './Footer.module.css';
 
 const Footer = () => {
     return (
-        <div>
-		Это footer сайта
+        <div className={st.footer}>
+		    Это footer сайта
         </div>
     )
 }

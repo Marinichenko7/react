@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import { BrowserRouter, Route } from "react-router-dom";
+import { Route } from "react-router-dom";
 import Header from './Components/Header/Header';
 import Nav from './Components/Nav/Nav';
 import Profile from './Components/Profile/Profile';
@@ -12,32 +12,26 @@ import Settings from './Components/Settings/Settings';
 
 const App = (props) => {
 
-
   return (
-    <BrowserRouter>
-      <div className="wrapper">
+    <div className="wrapper">
+      <header className="header">
+        <Header />
+      </header>
+      <nav className="nav">
+        <Nav />
+      </nav>
+      <div className="content">
 
-        <header className="header">
-          <Header />
-        </header>
-
-        <nav className="nav">
-          <Nav />
-        </nav>
-
-        <div className="content">
-          <Route path="/profile" render={() => <Profile posts={props.appState.profilePage.PostsData} />} />
-          <Route exact path="/dialogs" render={() => <Dialogs dialogs={props.appState.messagePage.DialogsData} messages={props.appState.messagePage.MessagesData} />} />
-          <Route path="/news" render={() => <News />} />
-          <Route path="/music" render={() => <Music />} />
-          <Route path="/settings" render={() => <Settings />} />
-        </div>
-
-        <div className="footer">
-          <Footer />
-        </div>
+        <Route path="/profile" render={() => <Profile posts={props.appState.profilePage.PostsData} addPost={props.addPost} />} />
+        <Route exact path="/dialogs" render={() => <Dialogs dialogData={props.appState.messagePage.DialogsData} messageData={props.appState.messagePage.MessagesData} />} />
+        <Route path="/news" render={() => <News />} />
+        <Route path="/music" render={() => <Music />} />
+        <Route path="/settings" render={() => <Settings />} />
       </div>
-    </BrowserRouter>
+      <div className="footer">
+        <Footer />
+      </div>
+    </div>
   );
 }
 
