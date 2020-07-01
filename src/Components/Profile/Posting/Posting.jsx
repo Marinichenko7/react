@@ -6,14 +6,14 @@ const Posting = (props) => {
     let inputVal = React.createRef();
 
     let addPost = () => {
-        props.addPost();
-        inputVal.current.value = '';
+        //props.addPost();
+        props.dispatch({ type: "ADD-POST" });
     }
 
     let changePost = () => {
         let valueInput = inputVal.current.value;
-        props.eventPost(valueInput);
-        
+        //props.eventPost(valueInput);
+        props.dispatch({ type: "UPDATE-TEXT-NEW-POST", text: valueInput });
     }
 
     return (

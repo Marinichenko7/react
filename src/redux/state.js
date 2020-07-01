@@ -44,44 +44,53 @@ let store = {
             }
         }
     },
+
     _callSubscriber() {
-        
+
     },
     getState() {
         return this._state
     },
-    addPost(){
-        let objPost = {
-            id: 5,
-            message: this._state.profilePage.PostsData.newPost,
-            like_count: 0,
-            share_count: 0
-        }
-        this._state.profilePage.PostsData.posts.push(objPost);
-        this._callSubscriber(this._state);
-        this._state.profilePage.PostsData.newPost = '';
-    },
-    eventPost(text) {
-        this._state.profilePage.PostsData.newPost = text;
-        this._callSubscriber(this._state);
-    },
-    addMessage() {
-        let objMessage = {
-            id: 10,
-            sender: 'Kolya',
-            text: this._state.messagePage.MessagesData.newMessage,
-            date: "1.07.2020 12:40"
-        }
-        this._state.messagePage.MessagesData.messages.push(objMessage);
-        this._callSubscriber(this._state);
-        this._state.messagePage.MessagesData.newMessage = '';
-    },
-    eventMessage(text) {
-        this._state.messagePage.MessagesData.newMessage = text;
-        this._callSubscriber(this._state);
-    },
     subscribe(observer) {
         this._callSubscriber = observer;
+    },
+
+    dispatch(action) {
+        if(action.type === "ADD-POST"){
+
+            let objPost = {
+                id: 5,
+                message: this._state.profilePage.PostsData.newPost,
+                like_count: 0,
+                share_count: 0
+            }
+            this._state.profilePage.PostsData.posts.push(objPost);
+            this._callSubscriber(this._state);
+            this._state.profilePage.PostsData.newPost = '';
+
+        } else if(action.type === "UPDATE-TEXT-NEW-POST") {
+
+            this._state.profilePage.PostsData.newPost = action.text;
+            this._callSubscriber(this._state);
+
+        } else if(action.type === "SEND-MESSAGE") {
+
+            let objMessage = {
+                id: 10,
+                sender: 'Kolya',
+                text: this._state.messagePage.MessagesData.newMessage,
+                date: "1.07.2020 12:40"
+            }
+            this._state.messagePage.MessagesData.messages.push(objMessage);
+            this._callSubscriber(this._state);
+            this._state.messagePage.MessagesData.newMessage = '';
+
+        } else if(action.type === "UPDATE-TEXT-MESSAGE") {
+
+            this._state.messagePage.MessagesData.newMessage = action.text;
+            this._callSubscriber(this._state);
+
+        }
     }
 }
 

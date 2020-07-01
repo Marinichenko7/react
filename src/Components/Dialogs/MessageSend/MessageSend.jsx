@@ -8,12 +8,12 @@ const MessageSend = (props) => {
 
     let messageText = () => {
         
-        props.addMessage();
+        props.dispatch({ type: "SEND-MESSAGE" });
     }
 
     let changeMessage = () => {
         let messageText = messageHref.current.value;
-        props.eventMessage(messageText);
+        props.dispatch({ type: "UPDATE-TEXT-MESSAGE", text: messageText });
     }
 
     return (

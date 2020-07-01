@@ -11,7 +11,6 @@ import Music from './Components/Music/Music';
 import Settings from './Components/Settings/Settings';
 
 const App = (props) => {
-
   return (
     <div className="wrapper">
       <header className="header">
@@ -23,13 +22,11 @@ const App = (props) => {
       <div className="content">
 
         <Route path="/profile" render={() => <Profile PostsData={props.appState.profilePage.PostsData}
-                                                      addPost={props.addPost}
-                                                      eventPost={props.eventPost} />} />
-                                                      
+                                                      dispatch={props.dispatch} />} />
+
         <Route exact path="/dialogs" render={() => <Dialogs dialogData={props.appState.messagePage.DialogsData}
                                                             messageData={props.appState.messagePage.MessagesData}
-                                                            addMessage={props.addMessage}
-                                                            eventMessage={props.eventMessage} />} />
+                                                            dispatch={props.dispatch} />} />
         <Route path="/news" render={() => <News />} />
         <Route path="/music" render={() => <Music />} />
         <Route path="/settings" render={() => <Settings />} />
