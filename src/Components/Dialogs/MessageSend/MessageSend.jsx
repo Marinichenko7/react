@@ -7,16 +7,18 @@ const MessageSend = (props) => {
     let messageHref = React.createRef();
 
     let messageText = () => {
-        let messageText = messageHref.current.value;
-        alert(messageText);
+        
+        props.addMessage();
     }
-    
 
-    console.log(messageText);
+    let changeMessage = () => {
+        let messageText = messageHref.current.value;
+        props.eventMessage(messageText);
+    }
 
     return (
         <div className={st.send_message_block}>
-            <input ref={messageHref} className={st.message_input} type='text' placeholder='Message text...'></input>
+            <input onChange={changeMessage} ref={messageHref} className={st.message_input} type='text' value={props.messageData.newMessage}></input>
             <button onClick={messageText} className={st.send_message_btn}>Send</button>
         </div>
     )

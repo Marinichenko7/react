@@ -22,8 +22,14 @@ const App = (props) => {
       </nav>
       <div className="content">
 
-        <Route path="/profile" render={() => <Profile posts={props.appState.profilePage.PostsData} addPost={props.addPost} />} />
-        <Route exact path="/dialogs" render={() => <Dialogs dialogData={props.appState.messagePage.DialogsData} messageData={props.appState.messagePage.MessagesData} />} />
+        <Route path="/profile" render={() => <Profile PostsData={props.appState.profilePage.PostsData}
+                                                      addPost={props.addPost}
+                                                      eventPost={props.eventPost} />} />
+                                                      
+        <Route exact path="/dialogs" render={() => <Dialogs dialogData={props.appState.messagePage.DialogsData}
+                                                            messageData={props.appState.messagePage.MessagesData}
+                                                            addMessage={props.addMessage}
+                                                            eventMessage={props.eventMessage} />} />
         <Route path="/news" render={() => <News />} />
         <Route path="/music" render={() => <Music />} />
         <Route path="/settings" render={() => <Settings />} />
