@@ -1,23 +1,57 @@
 const SEND_MESSAGE = "SEND-MESSAGE";
 const UPDATE_TEXT_MESSAGE = "UPDATE-TEXT-MESSAGE";
 
-const messagesProducer = (state, action) => {
-    
-    switch(action.type) {
+let initialState = {
+    dialogsData: {
+        dialogs: [
+            { id: 1, sender: 'Kolya' },
+            { id: 2, sender: 'Misha' },
+            { id: 3, sender: 'Valentina' },
+            { id: 4, sender: 'Dima' }
+        ],
+        newDialog: ''
+    },
+    messagesData: {
+        messages: [
+            { id: 1, sender: 'Kolya', text: 'Hi! Whats up?', date: '3 sept 18:31' },
+            { id: 2, sender: 'Vitya', text: 'Hello! I`m fine. Now i have a dinner. And you?', date: '3 sept 18:33' },
+            { id: 1, sender: 'Kolya', text: 'Hi! Whats up?', date: '3 sept 18:31' },
+            { id: 2, sender: 'Vitya', text: 'Hello! I`m fine. Now i have a dinner. And you?', date: '3 sept 18:33' },
+            { id: 1, sender: 'Kolya', text: 'Hi! Whats up?', date: '3 sept 18:31' },
+            { id: 2, sender: 'Vitya', text: 'Hello! I`m fine. Now i have a dinner. And you?', date: '3 sept 18:33' },
+            { id: 1, sender: 'Kolya', text: 'Hi! Whats up?', date: '3 sept 18:31' },
+            { id: 2, sender: 'Vitya', text: 'Hello! I`m fine. Now i have a dinner. And you?', date: '3 sept 18:33' },
+            { id: 1, sender: 'Kolya', text: 'Hi! Whats up?', date: '3 sept 18:31' },
+            { id: 2, sender: 'Vitya', text: 'Hello! I`m fine. Now i have a dinner. And you?', date: '3 sept 18:33' },
+            { id: 1, sender: 'Kolya', text: 'Hi! Whats up?', date: '3 sept 18:31' },
+            { id: 2, sender: 'Vitya', text: 'Hello! I`m fine. Now i have a dinner. And you?', date: '3 sept 18:33' },
+            { id: 1, sender: 'Kolya', text: 'Hi! Whats up?', date: '3 sept 18:31' },
+            { id: 2, sender: 'Vitya', text: 'Hello! I`m fine. Now i have a dinner. And you?', date: '3 sept 18:33' },
+            { id: 1, sender: 'Kolya', text: 'Hi! Whats up?', date: '3 sept 18:31' },
+            { id: 2, sender: 'Vitya', text: 'Hello! I`m fine. Now i have a dinner. And you?', date: '3 sept 18:33' }
+        ],
+        newMessage: ''
+    }
+}
+
+const messagesProducer = (state = initialState, action) => {
+
+    switch (action.type) {
         case SEND_MESSAGE:
+                
             let dateAction = new Date().toLocaleString();
             let objMessage = {
-                id: state.messages.length,
+                id: state.messagesData.messages.length,
                 sender: 'User',
-                text: state.newMessage,
+                text: state.messagesData.newMessage,
                 date: dateAction
             }
-            state.messages.push(objMessage);
-            state.newMessage = '';
+            state.messagesData.messages.push(objMessage);
+            state.messagesData.newMessage = '';
             return state;
 
         case UPDATE_TEXT_MESSAGE:
-            state.newMessage = action.value;
+            state.messagesData.newMessage = action.value;
             return state;
 
         default:

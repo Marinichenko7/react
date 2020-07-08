@@ -6,12 +6,14 @@ import Post from "./Post/Post";
 
 const Profile = (props) => {
     
-    let PostView = props.PostsData.posts.map( dialog => <Post message={dialog.message} date={dialog.date} like_count={dialog.like_count} share_count={dialog.share_count} />);
+    let PostView = props.posts.map( dialog => <Post message={dialog.message} date={dialog.date} like_count={dialog.like_count} share_count={dialog.share_count} />);
     
     return (
         <div>
             <ProfileInfo />
-            <Posting newPost={props.PostsData.newPost} dispatch={props.dispatch} />
+            <Posting newPost={props.newPost}
+                    addPost={props.addPost}
+                    changePost={props.changePost}/>
 
             <div className={st.posts}>
                 { PostView }

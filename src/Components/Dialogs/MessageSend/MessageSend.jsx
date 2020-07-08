@@ -1,26 +1,23 @@
 import React from 'react';
 import st from './MessageSend.module.css';
-import { sendMessageAction, updateTextMessageAction } from '../../../redux/messagesReducer';
-
 
 const MessageSend = (props) => {
     
-    let messageHref = React.createRef();
+    let valueInput = React.createRef();
 
-    let messageText = () => {
-
-        props.dispatch(sendMessageAction());
+    let onSendMessage = () => {
+        props.sendMessage();
     }
 
-    let changeMessage = () => {
-        let messageText = messageHref.current.value;
-        props.dispatch(updateTextMessageAction(messageText));
+    let onChangeMessage = () => {
+        let value = valueInput.current.value;
+        props.changeMessage(value);
     }
 
     return (
         <div className={st.send_message_block}>
-            <input onChange={changeMessage} ref={messageHref} className={st.message_input} type='text' value={props.messageData.newMessage}></input>
-            <button onClick={messageText} className={st.send_message_btn}>Send</button>
+            <input onChange={onChangeMessage} ref={valueInput} className={st.message_input} type='text' value={props.newMessage}></input>
+            <button onClick={onSendMessage} className={st.send_message_btn}>Send</button>
         </div>
     )
 }

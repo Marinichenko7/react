@@ -7,8 +7,8 @@ import MessageSend from './MessageSend/MessageSend';
 
 const Dialogs = (props) => {
     
-    let allDialogs = props.dialogData.dialogs.map( (d) => <DialogsItem id={d.id} sender={d.sender} />);
-    let allMessages = props.messageData.messages.map( (m) => <MessagesItem id={m.id} sender={m.sender} text ={m.text} date={m.date} />);
+    let allDialogs = props.dialogs.map( (d) => <DialogsItem id={d.id} sender={d.sender} />);
+    let allMessages = props.messages.map( (m) => <MessagesItem id={m.id} sender={m.sender} text ={m.text} date={m.date} />);
 
 
     return (
@@ -20,8 +20,9 @@ const Dialogs = (props) => {
                 <div className={st.block_message}>
                     { allMessages }
                 </div>
-                <MessageSend messageData={props.messageData}
-                            dispatch={props.dispatch} />
+                <MessageSend newMessage={props.newMessage}
+                            changeMessage={props.changeMessage}
+                            sendMessage={props.sendMessage} />
             </div>
         </div>
     )
