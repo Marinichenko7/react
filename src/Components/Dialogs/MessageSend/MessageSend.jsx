@@ -1,5 +1,6 @@
 import React from 'react';
 import st from './MessageSend.module.css';
+import { sendMessageAction, updateTextMessageAction } from '../../../redux/messagesReducer';
 
 
 const MessageSend = (props) => {
@@ -7,13 +8,13 @@ const MessageSend = (props) => {
     let messageHref = React.createRef();
 
     let messageText = () => {
-        
-        props.dispatch({ type: "SEND-MESSAGE" });
+
+        props.dispatch(sendMessageAction());
     }
 
     let changeMessage = () => {
         let messageText = messageHref.current.value;
-        props.dispatch({ type: "UPDATE-TEXT-MESSAGE", text: messageText });
+        props.dispatch(updateTextMessageAction(messageText));
     }
 
     return (

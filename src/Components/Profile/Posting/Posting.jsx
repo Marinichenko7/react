@@ -1,19 +1,20 @@
 import React from 'react';
 import st from "./Posting.module.css";
+import { addPostAction, updatePostAction }  from './../../../redux/profileReducer';
+
+
 
 const Posting = (props) => {
     
     let inputVal = React.createRef();
 
     let addPost = () => {
-        //props.addPost();
-        props.dispatch({ type: "ADD-POST" });
+        props.dispatch(addPostAction());
     }
 
     let changePost = () => {
         let valueInput = inputVal.current.value;
-        //props.eventPost(valueInput);
-        props.dispatch({ type: "UPDATE-TEXT-NEW-POST", text: valueInput });
+        props.dispatch(updatePostAction(valueInput));
     }
 
     return (

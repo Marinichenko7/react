@@ -1,14 +1,17 @@
+import profileReducer from './profileReducer';
+import messagesReducer from './messagesReducer';
+
 let store = {
     _state: {
         profilePage: {
             PostsData: {
                 posts: [
-                    { id: 1, message: 'Hi! How are you?', like_count: 2, share_count: 1 },
-                    { id: 1, message: 'I was in market to day. So, what did you do?', like_count: 12, share_count: 41 },
-                    { id: 1, message: 'I will go to the park and zoo tomorow.', like_count: 18, share_count: 8 },
-                    { id: 1, message: 'Hi! How are you?', like_count: 158, share_count: 36 }
+                    { id: 1, message: 'Hi! How are you?', date: "10.05.2020, 18:45", like_count: 2, share_count: 1 },
+                    { id: 1, message: 'I was in market to day. So, what did you do?', date: "10.05.2020, 18:45", like_count: 12, share_count: 41 },
+                    { id: 1, message: 'I will go to the park and zoo tomorow.', date: "10.05.2020, 18:45", like_count: 18, share_count: 8 },
+                    { id: 1, message: 'Hi! How are you?', date: "10.05.2020, 18:45", like_count: 158, share_count: 36 }
                 ],
-                newPost: "new post"
+                newPost: ""
             }
         },
         messagePage: {
@@ -44,55 +47,28 @@ let store = {
             }
         }
     },
-
     _callSubscriber() {
 
     },
+
     getState() {
-        return this._state
+        return this._state;
     },
     subscribe(observer) {
         this._callSubscriber = observer;
     },
-
     dispatch(action) {
-        if(action.type === "ADD-POST"){
-
-            let objPost = {
-                id: 5,
-                message: this._state.profilePage.PostsData.newPost,
-                like_count: 0,
-                share_count: 0
-            }
-            this._state.profilePage.PostsData.posts.push(objPost);
-            this._callSubscriber(this._state);
-            this._state.profilePage.PostsData.newPost = '';
-
-        } else if(action.type === "UPDATE-TEXT-NEW-POST") {
-
-            this._state.profilePage.PostsData.newPost = action.text;
-            this._callSubscriber(this._state);
-
-        } else if(action.type === "SEND-MESSAGE") {
-
-            let objMessage = {
-                id: 10,
-                sender: 'Kolya',
-                text: this._state.messagePage.MessagesData.newMessage,
-                date: "1.07.2020 12:40"
-            }
-            this._state.messagePage.MessagesData.messages.push(objMessage);
-            this._callSubscriber(this._state);
-            this._state.messagePage.MessagesData.newMessage = '';
-
-        } else if(action.type === "UPDATE-TEXT-MESSAGE") {
-
-            this._state.messagePage.MessagesData.newMessage = action.text;
-            this._callSubscriber(this._state);
-
-        }
+        
+        this._state.profilePage.PostsData = profileReducer(this._state.profilePage.PostsData, action);
+        this._state.messagePage.MessagesData = messagesReducer(this._state.messagePage.MessagesData, action);
+        this._callSubscriber(this._state);
     }
 }
+
+
+
+
+
 
 window.state = store;
 
