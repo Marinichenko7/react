@@ -24,13 +24,13 @@ const App = (props) => {
 
         {/*<Route path="/profile" render={() => <Profile postsData={props.state.profilePage.postsData}
                                                       dispatch={props.dispatch} />} />*/}
-        <Route path="/profile" render={() => <ProfileContainer store={props.store} />} />
+        <Route path="/profile" render={() => <ProfileContainer />} />
 
         {/*<Route exact path="/dialogs" render={() => <Dialogs dialogsData={props.state.messagePage.dialogsData}
                                                             messagesData={props.state.messagePage.messagesData}
                                                     dispatch={props.dispatch} />} />*/}
 
-        <Route exact path="/dialogs" render={() => <DialogsContainer store={props.store} />} />
+        <Route exact path="/dialogs" render={() => <DialogsContainer  />} />
 
         <Route path="/news" render={() => <News />} />
         <Route path="/music" render={() => <Music />} />
