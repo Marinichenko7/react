@@ -9,6 +9,7 @@ import DialogsContainer from './Components/Dialogs/DialogsContainer';
 import News from './Components/News/News';
 import Music from './Components/Music/Music';
 import Settings from './Components/Settings/Settings';
+import UsersContainer from './Components/Users/UsersContainer';
 
 const App = (props) => {
   
@@ -35,6 +36,7 @@ const App = (props) => {
         <Route path="/news" render={() => <News />} />
         <Route path="/music" render={() => <Music />} />
         <Route path="/settings" render={() => <Settings />} />
+        <Route path="/users" render={() => <UsersContainer />} />
       </div>
       <div className="footer">
         <Footer />

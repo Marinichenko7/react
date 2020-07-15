@@ -9,22 +9,13 @@ let initialState = {
         { id: 4, sender: 'Dima' }
     ],
     messages: [
+        { id: 0, sender: 'Vitya', text: 'Hello! I`m fine. Now i have a dinner. And you?', date: '3 sept 18:33' },
         { id: 1, sender: 'Kolya', text: 'Hi! Whats up?', date: '3 sept 18:31' },
         { id: 2, sender: 'Vitya', text: 'Hello! I`m fine. Now i have a dinner. And you?', date: '3 sept 18:33' },
-        { id: 1, sender: 'Kolya', text: 'Hi! Whats up?', date: '3 sept 18:31' },
-        { id: 2, sender: 'Vitya', text: 'Hello! I`m fine. Now i have a dinner. And you?', date: '3 sept 18:33' },
-        { id: 1, sender: 'Kolya', text: 'Hi! Whats up?', date: '3 sept 18:31' },
-        { id: 2, sender: 'Vitya', text: 'Hello! I`m fine. Now i have a dinner. And you?', date: '3 sept 18:33' },
-        { id: 1, sender: 'Kolya', text: 'Hi! Whats up?', date: '3 sept 18:31' },
-        { id: 2, sender: 'Vitya', text: 'Hello! I`m fine. Now i have a dinner. And you?', date: '3 sept 18:33' },
-        { id: 1, sender: 'Kolya', text: 'Hi! Whats up?', date: '3 sept 18:31' },
-        { id: 2, sender: 'Vitya', text: 'Hello! I`m fine. Now i have a dinner. And you?', date: '3 sept 18:33' },
-        { id: 1, sender: 'Kolya', text: 'Hi! Whats up?', date: '3 sept 18:31' },
-        { id: 2, sender: 'Vitya', text: 'Hello! I`m fine. Now i have a dinner. And you?', date: '3 sept 18:33' },
-        { id: 1, sender: 'Kolya', text: 'Hi! Whats up?', date: '3 sept 18:31' },
-        { id: 2, sender: 'Vitya', text: 'Hello! I`m fine. Now i have a dinner. And you?', date: '3 sept 18:33' },
-        { id: 1, sender: 'Kolya', text: 'Hi! Whats up?', date: '3 sept 18:31' },
-        { id: 2, sender: 'Vitya', text: 'Hello! I`m fine. Now i have a dinner. And you?', date: '3 sept 18:33' }
+        { id: 3, sender: 'Kolya', text: 'Hi! Whats up?', date: '3 sept 18:31' },
+        { id: 4, sender: 'Vitya', text: 'Hello! I`m fine. Now i have a dinner. And you?', date: '3 sept 18:33' },
+        { id: 5, sender: 'Kolya', text: 'Hi! Whats up?', date: '3 sept 18:31' },
+        { id: 6, sender: 'Vitya', text: 'Hello! I`m fine. Now i have a dinner. And you?', date: '3 sept 18:33' }
     ],
     newMessage: ''
 }

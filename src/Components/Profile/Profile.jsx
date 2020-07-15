@@ -6,7 +6,7 @@ import Post from "./Post/Post";
 
 const Profile = (props) => {
     
-    let PostView = props.posts.map( d => <Post message={d.message} date={d.date} like_count={d.like_count} share_count={d.share_count} />);
+    let PostView = props.posts.map( d => <Post key={d.id} message={d.message} date={d.date} like_count={d.like_count} share_count={d.share_count} />);
     
     return (
         <div>

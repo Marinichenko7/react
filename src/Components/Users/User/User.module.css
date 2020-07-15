@@ -1,0 +1,76 @@
+.user_item{
+    min-width: 250px;
+    max-width: 600px;
+    margin: 0 auto;
+    display: flex;
+    margin-bottom: 20px;
+}
+.pic_and_action{
+    max-width: 80px;
+    margin-right: 10px;
+}
+.user_pic img{
+    width: 80px;
+}
+.user_follow{
+    width: 100%;
+    background-color: rgb(34, 165, 34);
+    border: 0;
+    color: white;
+    font-weight: 500;
+    border: 2px solid rgb(34, 165, 34);
+    transition: .2s ease-in-out;
+}
+.user_follow:hover{
+    cursor: pointer;
+    background-color: #fff;
+    color: rgb(34, 165, 34);
+    border: 2px solid rgb(34, 165, 34); 
+}
+.user_unFollow{
+    width: 100%;
+    background-color: white;
+    border: 0;
+    color: rgb(34, 165, 34);
+    font-weight: 500;
+    border: 2px solid rgb(34, 165, 34);
+    transition: .2s ease-in-out;
+}
+.user_unFollow:hover{
+    cursor: pointer;
+    background-color: rgb(34, 165, 34); 
+    color: #fff;
+    border: 2px solid rgb(34, 165, 34); 
+}
+.user_info{
+    display: flex;
+    width: 100%;
+    border: 2px solid #afafaf;
+    border-radius: 5px;
+    padding: 5px;
+}
+.left_info{
+    min-width: 100px;
+    width: 70%;
+}
+.right_info{
+    min-width: 50px;
+    width: 30%;
+}
+.user_name{
+    display: block;
+    margin-bottom: 15px;
+    font-size: 20px;
+    line-height: 1.2;
+    color: black;
+}
+.user_status{
+    display: block;
+    font-size: 16px;
+    line-height: 1.2;
+    color: #afafaf;
+}
+.user_resides{
+    font-size: 16px;
+    line-height: 1.2;
+}

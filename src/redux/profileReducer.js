@@ -3,10 +3,11 @@ const UPDATE_TEXT_POST = "UPDATE-TEXT-NEW-POST";
 
 let initialState = {
     posts: [
+        { id: 0, message: 'I will go to the park and zoo tomorow.', date: "10.05.2020, 18:45", like_count: 18, share_count: 8 },
         { id: 1, message: 'Hi! How are you?', date: "10.05.2020, 18:45", like_count: 2, share_count: 1 },
-        { id: 1, message: 'I was in market to day. So, what did you do?', date: "10.05.2020, 18:45", like_count: 12, share_count: 41 },
-        { id: 1, message: 'I will go to the park and zoo tomorow.', date: "10.05.2020, 18:45", like_count: 18, share_count: 8 },
-        { id: 1, message: 'Hi! How are you?', date: "10.05.2020, 18:45", like_count: 158, share_count: 36 }
+        { id: 2, message: 'I was in market to day. So, what did you do?', date: "10.05.2020, 18:45", like_count: 12, share_count: 41 },
+        { id: 3, message: 'I will go to the park and zoo tomorow.', date: "10.05.2020, 18:45", like_count: 18, share_count: 8 },
+        { id: 4, message: 'Hi! How are you?', date: "10.05.2020, 18:45", like_count: 158, share_count: 36 }
     ],
     newPost: ""
 }
