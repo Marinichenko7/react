@@ -35,3 +35,32 @@
     color: rgb(34, 165, 34);
     border: 2px solid rgb(34, 165, 34);
 }
+.wrapp_list_pages{
+    display: block;
+    width: 100%;
+    margin: 15px 0;
+}
+.curent_page{
+    background-color: green;
+    color: white !important;
+}
+.list_pages{
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+}
+.list_pages li{
+    border: 1px solid green;
+    cursor: pointer;
+    padding: 5px 10px;
+    margin: 0 5px;
+    line-height: 1.2;
+    border-radius: 20px;
+    transition: .2s ease-in-out;
+    color: green;
+}
+.list_pages li:hover{
+    background-color: green;
+    color: white;
+}

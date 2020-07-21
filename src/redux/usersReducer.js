@@ -1,9 +1,9 @@
 const FOLLOW_USER = "FOLLOW-USER";
 const UNFOLLOW_USER = "UNFOLLOW-USER";
-const SET_USERS = "SET-USERS";
+const SET_DATA_USERS = "SET_DATA_USERS";
 
 let initialState = {
-    users: []
+    data: {}
     /*users: [
         { id: 0, fullName: "Tolya", age: 28, gender: "man", status: "I alone cook sosiges", followed: false, location: { city: "Moscow", country: "Russia" }, avatar: "https://www.pavilionweb.com/wp-content/uploads/2017/03/man-300x300.png" },
         { id: 1, fullName: "Dmitriy", age: 23, gender: "man", status: "I am a boss", followed: true, location: { city: "Kiev", country: "Ukraine" }, avatar: "https://www.pavilionweb.com/wp-content/uploads/2017/03/man-300x300.png" },
@@ -14,7 +14,13 @@ let initialState = {
 }
 
 const usersReducer = (state = initialState, action) => {
+    
     switch (action.type) {
+        case SET_DATA_USERS:
+            return {
+                ...state,
+                data: {...action.dataUsers}
+            }
         case FOLLOW_USER:
             return {
                 ...state,
@@ -35,19 +41,14 @@ const usersReducer = (state = initialState, action) => {
                     return u;
                 })
             }
-        case SET_USERS:
-            return{
-                ...state, users: [ ...state.users, ...action.users]
-            }
         default:
             return state;
     }
 
 }
 
-
 export const followAction = (id) => ({ type: FOLLOW_USER, user_id: id })
 export const unfollowAction = (id) => ({ type: UNFOLLOW_USER, user_id: id })
-export const getUsersAction = (users) => ({ type: SET_USERS, users })
+export const getUsersDataAction = (dataUsers) => ({ type: SET_DATA_USERS, dataUsers })
 
 export default usersReducer;
