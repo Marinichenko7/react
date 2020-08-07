@@ -66,12 +66,12 @@ const usersReducer = (state = initialState, action) => {
     }
 }
 
-export const followAction = (id) => ({ type: FOLLOW_USER, user_id: id })
-export const unfollowAction = (id) => ({ type: UNFOLLOW_USER, user_id: id })
-export const getUsersDataAction = (usersData) => ({ type: SET_DATA_USERS, usersData })
-export const showMoreUsersAction = (usersData) => ({ type: SHOW_MORE_USERS_DATA, usersData })
-export const clearUsersDataAction = () => ({ type: CLEAR_USERS_DATA })
-export const togglePreloderAction = (isFetching) => ({ type: TOGGLE_PRELODER, isFetching })
+export const followUser = (id) => ({ type: FOLLOW_USER, user_id: id })
+export const unfollowUser = (id) => ({ type: UNFOLLOW_USER, user_id: id })
+export const getUserData = (usersData) => ({ type: SET_DATA_USERS, usersData })
+export const showMoreUsers = (usersData) => ({ type: SHOW_MORE_USERS_DATA, usersData })
+export const clearUserData = () => ({ type: CLEAR_USERS_DATA })
+export const togglePreloder = (isFetching) => ({ type: TOGGLE_PRELODER, isFetching })
 
 
 export default usersReducer;

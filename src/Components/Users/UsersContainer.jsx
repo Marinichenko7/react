@@ -1,5 +1,5 @@
 import React from 'react';
-import { followAction, unfollowAction, getUsersDataAction, clearUsersDataAction, showMoreUsersAction, togglePreloderAction } from '../../redux/usersReducer';
+import { followUser, unfollowUser, getUserData, clearUserData, showMoreUsers, togglePreloder } from '../../redux/usersReducer';
 import { connect } from 'react-redux';
 import * as axios from 'axios';
 import Users from './Users';
@@ -62,6 +62,7 @@ let mapStateToProps = (state) => {
     }
 }
 
+/*
 let mapDispatchToProps = (dispatch) => {
     return {
         getUserData: (data) => {
@@ -84,7 +85,17 @@ let mapDispatchToProps = (dispatch) => {
         }
     }
 }
+*/
 
-const UsersContainer = connect(mapStateToProps, mapDispatchToProps)(ContainerUsers);
+const UsersContainer = connect(mapStateToProps,
+    {
+    getUserData,
+    showMoreUsers,
+    clearUserData,
+    togglePreloder,
+    followUser,
+    unfollowUser
+    }
+)(ContainerUsers);
 
 export default UsersContainer;
