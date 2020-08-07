@@ -11,7 +11,7 @@ import Music from './Components/Music/Music';
 import Settings from './Components/Settings/Settings';
 import UsersContainer from './Components/Users/UsersContainer';
 
-const App = (props) => {
+const App = () => {
     return (
         <div className="wrapper">
             <header className="header">
