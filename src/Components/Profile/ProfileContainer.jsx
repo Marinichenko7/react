@@ -1,48 +1,35 @@
 import React from 'react';
-import { addPostAction, updatePostAction } from '../../redux/profileReducer';
+import { addPostAction, updatePostAction, setProfileUser } from '../../redux/profileReducer';
 import Profile from './Profile';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
+import * as axios from 'axios';
 
-/*const ProfileContainer = (props) => {
+class ProfileContainer extends React.Component {
     
-    let state = props.store.getState();
-
-    let addPost = () => {
-        props.store.dispatch(addPostAction());
+    componentDidMount() {
+        setTimeout(() => {
+            axios.get(`https://reqres.in/api/users/1`)
+                .then(responce => {
+                    this.props.setProfileUser(responce.data)
+                    
+                });
+        }, 700)
     }
 
-    let changePost = (value) => {
-        props.store.dispatch(updatePostAction(value));
+    render(){
+        
+        return(
+            <Profile {...this.props}  profileData={this.props.profileData}/>
+        )
     }
-
-
-    return (
-        <Profile posts={state.profilePage.postsData.posts}
-                newPost={state.profilePage.postsData.newPost} 
-                addPost={addPost}
-                changePost={changePost} />
-    )
-}*/
+}
 
 let mapStateToProps = (state) => {
-    return{
+    return {
         posts: state.profilePage.posts,
-        newPost: state.profilePage.newPost
+        newPost: state.profilePage.newPost,
+        profileData: state.profilePage.profileData
     }
 }
 
-let mapDispatchToProps = (dispatch) => {
-    return{
-        addPost: () => {
-            dispatch(addPostAction());
-        },
-        changePost: (value) => {
-            dispatch(updatePostAction(value));
-        }
-    }
-}
-
-const ProfileContainer = connect(mapStateToProps, mapDispatchToProps)(Profile);
-
-
-export default ProfileContainer;
+export default connect(mapStateToProps, {addPostAction, updatePostAction, setProfileUser})(ProfileContainer);

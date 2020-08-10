@@ -1,7 +1,11 @@
 const ADD_POST = "ADD-POST";
 const UPDATE_TEXT_POST = "UPDATE-TEXT-NEW-POST";
+const SET_PROFILE_USER = "SET_PROFILE_USER";
 
 let initialState = {
+    profileData: {},
+    profileInfo: {},
+    profilePosts: {},
     posts: [
         { id: 0, message: 'I will go to the park and zoo tomorow.', date: "10.05.2020, 18:45", like_count: 18, share_count: 8 },
         { id: 1, message: 'Hi! How are you?', date: "10.05.2020, 18:45", like_count: 2, share_count: 1 },
@@ -29,10 +33,6 @@ const profileReducer = (state = initialState, action) => {
                 posts: [...state.posts, objPost],
                 newPost: ''
             };
-            //stateCopy.posts = [...state.posts];
-            //stateCopy.posts.push(objPost);
-            //stateCopy.newPost = '';
-            //return stateCopy;
         }
         case UPDATE_TEXT_POST:
             return {
@@ -40,8 +40,13 @@ const profileReducer = (state = initialState, action) => {
                 newPost: action.value
 
             }
-        //stateCopy.newPost = action.value;
-        //return stateCopy;
+        case SET_PROFILE_USER: {
+            return {
+                ...state,
+                profileInfo: action.profile.data,
+                profileData: action.profile
+            }
+        }
         default:
             return state;
     }
@@ -49,6 +54,7 @@ const profileReducer = (state = initialState, action) => {
 
 export const addPostAction = () => ({ type: ADD_POST });
 export const updatePostAction = (text) => ({ type: UPDATE_TEXT_POST, value: text });
+export const setProfileUser = (profile) => ({ type: SET_PROFILE_USER, profile });
 
 
 export default profileReducer;
