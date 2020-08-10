@@ -4,19 +4,28 @@ import User from './User/User';
 import Preloder from '../SideEffects/Preloader';
 
 let Users = (props) => {
-
+    
     let allUsers = [];
     let allPages = [];
     
     if (Object.keys(props.users).length != 0) {
         allUsers = props.users.map(u => <User key={u.id}
             user_id={u.id}
-            fullName={`${u.first_name} ${u.last_name}`}
+            fullName={`${u.name} ${u.surname}`}
+            age={u.age}
             email={u.email}
-            avatar={u.avatar} />)
+            avatar={u.avatar.min}
+            status={u.status}
+            online={u.online}
+            following={u.following}
+            last_activ={u.last_activ}
+            followUser={props.followUser}
+            unfollowUser={props.unfollowUser}
+        />)
+        let count_pages = props.users.length / props.page_count;
 
-        for (let i = 1; i <= props.total_pages; i++) {
-            if (i === props.page) {
+        for (let i = 1; i <= Math.ceil(count_pages); i++) {
+            if (i === 1) {
                 allPages.push(<li key={i} className={st.curent_page} onClick={() => { props.onChangePage(i) }} >{i}</li>);
             } else {
                 allPages.push(<li key={i} onClick={() => { props.onChangePage(i) }} >{i}</li>);

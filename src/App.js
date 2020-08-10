@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import { Route } from "react-router-dom";
-import Header from './Components/Header/Header';
+import HeaderContainer from './Components/Header/HeaderContainer';
 import Nav from './Components/Nav/Nav';
 import ProfileContainer from './Components/Profile/ProfileContainer';
 import Footer from './Components/Footer/Footer';
@@ -15,7 +15,7 @@ const App = () => {
     return (
         <div className="wrapper">
             <header className="header">
-                <Header />
+                <HeaderContainer />
             </header>
             <nav className="nav">
                 <Nav />

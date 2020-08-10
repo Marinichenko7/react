@@ -7,10 +7,7 @@ const TOGGLE_PRELODER = "TOGGLE_PRELODER";
 
 let initialState = {
     users: [],
-    page: 0,
-    per_page: 0,
-    total: 0,
-    total_pages: 0,
+    page_count: 6,
     toggleFetch: false
 }
 const usersReducer = (state = initialState, action) => {
@@ -19,11 +16,7 @@ const usersReducer = (state = initialState, action) => {
         case SET_DATA_USERS:
             return {
                 ...state,
-                users: [...action.usersData.data],
-                page: action.usersData.page,
-                per_page: action.usersData.per_page,
-                total: action.usersData.total,
-                total_pages: action.usersData.total_pages
+                users: [...action.usersData.users]
             }
         case SHOW_MORE_USERS_DATA:
             return {
@@ -46,7 +39,7 @@ const usersReducer = (state = initialState, action) => {
                 ...state,
                 users: state.users.map(u => {
                     if (u.id === action.user_id) {
-                        return { ...u, followed: true }
+                        return { ...u, following: true }
                     }
                     return u;
                 })
@@ -56,7 +49,7 @@ const usersReducer = (state = initialState, action) => {
                 ...state,
                 users: state.users.map(u => {
                     if (u.id === action.user_id) {
-                        return { ...u, followed: false }
+                        return { ...u, following: false }
                     }
                     return u;
                 })

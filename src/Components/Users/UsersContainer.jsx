@@ -9,7 +9,7 @@ class ContainerUsers extends React.Component {
         this.props.togglePreloder(true)
         this.props.clearUserData();
         setTimeout(() => {
-            axios.get(`https://reqres.in/api/users?page=1`)
+            axios.get(`http://localhost:8000/usersData`)
                 .then(responce => {
                     this.props.getUserData(responce.data)
                     this.props.togglePreloder(false)
@@ -38,14 +38,9 @@ class ContainerUsers extends React.Component {
     }
     render() {
         return (
-            <Users users = {this.props.users}
-                    page = {this.props.page}
-                    per_page = {this.props.per_page}
-                    total = {this.props.total}
-                    total_pages = {this.props.total_pages}
-                    onChangePage = {this.onChangePage}
-                    onShowMoreUsers = {this.onShowMoreUsers}
-                    toggleFetch = {this.props.toggleFetch}
+            <Users {...this.props}
+                onChangePage = {this.onChangePage}
+                onShowMoreUsers = {this.onShowMoreUsers}
             />
         )
     }
@@ -54,38 +49,10 @@ class ContainerUsers extends React.Component {
 let mapStateToProps = (state) => {
     return {
         users: state.usersPage.users,
-        page: state.usersPage.page,
-        per_page: state.usersPage.per_page,
-        total: state.usersPage.total,
-        total_pages: state.usersPage.total_pages,
+        page_count: state.usersPage.page_count,
         toggleFetch: state.usersPage.toggleFetch
     }
 }
-
-/*
-let mapDispatchToProps = (dispatch) => {
-    return {
-        getUserData: (data) => {
-            dispatch(getUsersDataAction(data));
-        },
-        showMoreUsers: (data) => {
-            dispatch(showMoreUsersAction(data));
-        },
-        clearUserData: () => {
-            dispatch(clearUsersDataAction());
-        },
-        togglePreloder: (toggle) => {
-            dispatch(togglePreloderAction(toggle));
-        },
-        followUser: (id) => {
-            dispatch(followAction(id));
-        },
-        unfollowUser: (id) => {
-            dispatch(unfollowAction(id));
-        }
-    }
-}
-*/
 
 const UsersContainer = connect(mapStateToProps,
     {

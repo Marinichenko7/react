@@ -8,7 +8,7 @@ import Preloader from '../SideEffects/Preloader';
 const Profile = (props) => {
 
     let PostView = props.posts.map(d => <Post key={d.id} message={d.message} date={d.date} like_count={d.like_count} share_count={d.share_count} />);
-    console.log(props.toggleFetch)
+    
     return (
         <div>
             { !props.toggleFetch ? <Preloader /> : <ProfileInfo profileData={props.profileData} />}
