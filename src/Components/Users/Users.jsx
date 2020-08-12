@@ -20,6 +20,8 @@ let Users = (props) => {
             last_activ={u.last_activ}
             followUser={props.followUser}
             unfollowUser={props.unfollowUser}
+            toggleBtn={props.toggleBtn}
+            disableBtn={props.disableBtn}
         />)
         let count_pages = props.users.length / props.page_count;
 

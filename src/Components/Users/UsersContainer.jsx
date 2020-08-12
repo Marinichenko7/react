@@ -1,5 +1,5 @@
 import React from 'react';
-import { followUser, unfollowUser, getUserData, clearUserData, showMoreUsers, togglePreloder } from '../../redux/usersReducer';
+import { followUser, unfollowUser, getUserData, clearUserData, showMoreUsers, togglePreloder, disableBtn } from '../../redux/usersReducer';
 import { connect } from 'react-redux';
 import Users from './Users';
 import { UsersAPI } from '../../api/api';
@@ -30,7 +30,6 @@ class ContainerUsers extends React.Component {
         return (
             <Users {...this.props}
                 onChangePage={this.onChangePage}
-                onShowMoreUsers={this.onShowMoreUsers}
             />
         )
     }
@@ -40,7 +39,8 @@ let mapStateToProps = (state) => {
     return {
         users: state.usersPage.users,
         page_count: state.usersPage.page_count,
-        toggleFetch: state.usersPage.toggleFetch
+        toggleFetch: state.usersPage.toggleFetch,
+        toggleBtn: state.usersPage.toggleBtn
     }
 }
 
@@ -51,7 +51,8 @@ const UsersContainer = connect(mapStateToProps,
         clearUserData,
         togglePreloder,
         followUser,
-        unfollowUser
+        unfollowUser,
+        disableBtn
     }
 )(ContainerUsers);
 

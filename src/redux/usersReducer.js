@@ -4,11 +4,13 @@ const SET_DATA_USERS = "SET_DATA_USERS";
 const SHOW_MORE_USERS_DATA = "SHOW_MORE_USERS_DATA";
 const CLEAR_USERS_DATA = "CLEAR_USERS_DATA";
 const TOGGLE_PRELODER = "TOGGLE_PRELODER";
+const TO_DISABLE_BTN = "TO_DISABLE_BTN";
 
 let initialState = {
     users: [],
     page_count: 6,
-    toggleFetch: false
+    toggleFetch: false,
+    toggleBtn: []
 }
 const usersReducer = (state = initialState, action) => {
 
@@ -54,6 +56,14 @@ const usersReducer = (state = initialState, action) => {
                     return u;
                 })
             }
+        case TO_DISABLE_BTN: {
+            return {
+                ...state,
+                toggleBtn: action.isFollow
+                    ? [...state.toggleBtn, action.id]
+                    : state.toggleBtn.filter( id => id != action.id )
+            }
+        }
         default:
             return state;
     }
@@ -65,6 +75,7 @@ export const getUserData = (usersData) => ({ type: SET_DATA_USERS, usersData })
 export const showMoreUsers = (usersData) => ({ type: SHOW_MORE_USERS_DATA, usersData })
 export const clearUserData = () => ({ type: CLEAR_USERS_DATA })
 export const togglePreloder = (isFetching) => ({ type: TOGGLE_PRELODER, isFetching })
+export const disableBtn = (isFollow, id) => ({ type: TO_DISABLE_BTN, isFollow, id })
 
 
 export default usersReducer;
