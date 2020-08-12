@@ -13,8 +13,7 @@ let Users = (props) => {
             user_id={u.id}
             fullName={`${u.name} ${u.surname}`}
             age={u.age}
-            email={u.email}
-            avatar={u.avatar.min}
+            avatar={u.avatar}
             status={u.status}
             online={u.online}
             following={u.following}
@@ -45,10 +44,6 @@ let Users = (props) => {
                 <ul className={st.list_pages}>
                     {allPages}
                 </ul>
-            </div>
-            <div className={st.more_users}>
-                
-                <button onClick={() => props.onShowMoreUsers(2)} className={st.show_more_btn}>Show more</button>
             </div>
         </div>
     )

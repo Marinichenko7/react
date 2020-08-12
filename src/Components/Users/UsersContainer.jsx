@@ -1,46 +1,36 @@
 import React from 'react';
 import { followUser, unfollowUser, getUserData, clearUserData, showMoreUsers, togglePreloder } from '../../redux/usersReducer';
 import { connect } from 'react-redux';
-import * as axios from 'axios';
 import Users from './Users';
+import { UsersAPI } from '../../api/api';
 
 class ContainerUsers extends React.Component {
     componentDidMount() {
         this.props.togglePreloder(true)
         this.props.clearUserData();
-        setTimeout(() => {
-            axios.get(`http://localhost:8000/usersData`)
-                .then(responce => {
-                    this.props.getUserData(responce.data)
-                    this.props.togglePreloder(false)
-                });
-        }, 700)
+
+        UsersAPI.getAllUsers().then(data => {
+            this.props.getUserData(data)
+            this.props.togglePreloder(false)
+        });
+
     }
     onChangePage = (page) => {
         this.props.togglePreloder(true)
         this.props.clearUserData();
-        setTimeout(() => {
-            axios.get(`https://reqres.in/api/users?page=${page}`)
-                .then(responce => {
-                    this.props.getUserData(responce.data)
-                    this.props.togglePreloder(false)
-                });
-        }, 700)
-    }
-    onShowMoreUsers = (page) => {
-        setTimeout(() => {
-            axios.get(`https://reqres.in/api/users?page=${page}`)
-                .then(responce => {
-                    this.props.showMoreUsers(responce.data)
 
-                });
-        }, 700)
+        UsersAPI.getUsersPage(page)
+            .then(data => {
+                this.props.getUserData(data)
+                this.props.togglePreloder(false)
+            });
+
     }
     render() {
         return (
             <Users {...this.props}
-                onChangePage = {this.onChangePage}
-                onShowMoreUsers = {this.onShowMoreUsers}
+                onChangePage={this.onChangePage}
+                onShowMoreUsers={this.onShowMoreUsers}
             />
         )
     }
@@ -56,12 +46,12 @@ let mapStateToProps = (state) => {
 
 const UsersContainer = connect(mapStateToProps,
     {
-    getUserData,
-    showMoreUsers,
-    clearUserData,
-    togglePreloder,
-    followUser,
-    unfollowUser
+        getUserData,
+        showMoreUsers,
+        clearUserData,
+        togglePreloder,
+        followUser,
+        unfollowUser
     }
 )(ContainerUsers);
 

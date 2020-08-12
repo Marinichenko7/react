@@ -16,7 +16,7 @@ const usersReducer = (state = initialState, action) => {
         case SET_DATA_USERS:
             return {
                 ...state,
-                users: [...action.usersData.users]
+                users: [...action.usersData]
             }
         case SHOW_MORE_USERS_DATA:
             return {

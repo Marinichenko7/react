@@ -1,9 +1,10 @@
 import React from 'react';
 import st from './User.module.css';
 import { NavLink } from 'react-router-dom';
+import * as axios from 'axios';
+import { UsersAPI } from '../../../api/api';
 
 const User = (props) => {
-    
     return (
         <div className={st.user_item}>
             <div className={st.pic_and_action}>
@@ -13,8 +14,28 @@ const User = (props) => {
                     </div>
                 </NavLink>
                 <div className={st.user_action}>
-                    {
-                        props.following ? <button onClick={ () => props.unfollowUser(props.user_id) } className={st.user_unFollow}>Unfollow</button> : <button onClick={ () => props.followUser(props.user_id) } className={st.user_follow}>Follow</button>
+                    
+                    {   
+                        props.following
+                            ? <button onClick={ () => {
+                                UsersAPI.unfollowUser(props.user_id)
+                                    .then(responce => {
+                                        
+                                        if(responce.status == 200) {
+                                            props.unfollowUser(props.user_id)
+                                        }
+                                    })
+                            } } className={st.user_unFollow}>Unfollow</button>
+                            
+                            : <button onClick={ () => {
+                                UsersAPI.followUser(props.user_id)
+                                    .then(responce => {
+                                        
+                                        if(responce.status == 200){
+                                            props.followUser(props.user_id)
+                                        }
+                                    })
+                            } } className={st.user_follow}>Follow</button>
                     }
                 </div>
             </div>
