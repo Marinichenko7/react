@@ -8,7 +8,7 @@ let Users = (props) => {
     let allUsers = [];
     let allPages = [];
     
-    if (Object.keys(props.users).length != 0) {
+    if (Object.keys(props.users).length !== 0) {
         allUsers = props.users.map(u => <User key={u.id}
             user_id={u.id}
             fullName={`${u.name} ${u.surname}`}
@@ -18,10 +18,9 @@ let Users = (props) => {
             online={u.online}
             following={u.following}
             last_activ={u.last_activ}
-            followUser={props.followUser}
-            unfollowUser={props.unfollowUser}
+            follow={props.follow}
+            unfollow={props.unfollow}
             toggleBtn={props.toggleBtn}
-            disableBtn={props.disableBtn}
         />)
         let count_pages = props.users.length / props.page_count;
 

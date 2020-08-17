@@ -7,18 +7,40 @@ import Preloader from '../SideEffects/Preloader';
 
 const Profile = (props) => {
 
-    let PostView = props.posts.map(d => <Post key={d.id} message={d.message} date={d.date} like_count={d.like_count} share_count={d.share_count} />);
-    
+
+    let PostView = [];
+
+    if (Object.keys(props.posts).length !== 0) {
+        PostView = props.posts.map(d => <Post
+            
+            key={d.id}
+            id={d.id}
+            message={d.message}
+            date={d.date}
+            like_count={d.like_count}
+            share_count={d.share_count}
+            avatar={props.profileData.avatar}
+            likePostAction={props.likePostAction}
+            likePost={props.likePost}
+            disabledLiking={props.disabledLiking}
+            id_user={props.id_user}
+        />);
+    }
+
     return (
         <div>
-            { !props.toggleFetch ? <Preloader /> : <ProfileInfo profileData={props.profileData} />}
-            
-            <Posting newPost={props.newPost}
-                addPost={props.addPostAction}
-                changePost={props.updatePostAction} />
+            {props.toggleFetchInfoUser ? <Preloader /> : <ProfileInfo profileData={props.profileData} />}
+
+            <Posting
+                disabledPosting={props.disabledPosting}
+                newPost={props.newPost}
+                changePost={props.updatePostAction}
+                addPost={props.addPost}
+
+            />
 
             <div className={st.posts}>
-                {PostView}
+                {props.toggleFetchPostsData ? <Preloader /> : PostView}
             </div>
         </div>
     )

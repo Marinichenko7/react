@@ -18,3 +18,14 @@
     color: white;
     text-decoration: none;
 }
+.name_user{
+    color: yellow;
+    font-weight: bold;
+    line-height: 1.2;
+    font-size: 18px;
+    cursor: pointer;
+    transition: .2s ease-in-out;
+}
+.name_user:hover{
+    text-shadow: 0 0 5px black;
+}

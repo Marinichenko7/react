@@ -1,30 +1,15 @@
 import React from 'react';
-import { followUser, unfollowUser, getUserData, clearUserData, showMoreUsers, togglePreloder, disableBtn } from '../../redux/usersReducer';
+import { follow, unfollow, getUsers } from '../../redux/usersReducer';
 import { connect } from 'react-redux';
 import Users from './Users';
-import { UsersAPI } from '../../api/api';
 
 class ContainerUsers extends React.Component {
     componentDidMount() {
-        this.props.togglePreloder(true)
-        this.props.clearUserData();
-
-        UsersAPI.getAllUsers().then(data => {
-            this.props.getUserData(data)
-            this.props.togglePreloder(false)
-        });
+        this.props.getUsers(1)
 
     }
     onChangePage = (page) => {
-        this.props.togglePreloder(true)
-        this.props.clearUserData();
-
-        UsersAPI.getUsersPage(page)
-            .then(data => {
-                this.props.getUserData(data)
-                this.props.togglePreloder(false)
-            });
-
+        this.props.getUsers(page)
     }
     render() {
         return (
@@ -44,15 +29,37 @@ let mapStateToProps = (state) => {
     }
 }
 
+/*let mapDispatchToProps = (dispatch) => {
+    return{
+        getUsersData: (data) => {
+            dispatch(getUserData(data))
+        },
+        showMoreUsers: (data) => {
+            dispatch(showMoreUsers(data))
+        },
+        clearUserData: () => {
+            dispatch(clearUserData())
+        },
+        togglePreloder: (bool) => {
+            dispatch(togglePreloder(bool))
+        },
+        followUser: (id) => {
+            dispatch(followUser(id))
+        },
+        unfollowUser: (id) => {
+            dispatch(unfollowUser(id))
+        },
+        disableBtn: (bool, id) => {
+            dispatch(disableBtn(bool, id))
+        }
+    }
+}*/
+
 const UsersContainer = connect(mapStateToProps,
     {
-        getUserData,
-        showMoreUsers,
-        clearUserData,
-        togglePreloder,
-        followUser,
-        unfollowUser,
-        disableBtn
+        follow,
+        unfollow,
+        getUsers
     }
 )(ContainerUsers);
 
