@@ -10,6 +10,7 @@ import News from './Components/News/News';
 import Music from './Components/Music/Music';
 import Settings from './Components/Settings/Settings';
 import UsersContainer from './Components/Users/UsersContainer';
+import Login from "./Components/Login/Login";
 
 const App = () => {
     return (
@@ -21,6 +22,7 @@ const App = () => {
                 <Nav />
             </nav>
             <div className="content">
+                <Route path="/login" render={() => <Login />} />
                 <Route path="/profile/:user_id?" render={() => <ProfileContainer />} />
                 <Route exact path="/dialogs" render={() => <DialogsContainer />} />
                 <Route path="/news" render={() => <News />} />

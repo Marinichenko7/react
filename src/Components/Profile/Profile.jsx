@@ -7,7 +7,6 @@ import Preloader from '../SideEffects/Preloader';
 
 const Profile = (props) => {
 
-
     let PostView = [];
 
     if (Object.keys(props.posts).length !== 0) {
@@ -24,6 +23,7 @@ const Profile = (props) => {
             likePost={props.likePost}
             disabledLiking={props.disabledLiking}
             id_user={props.id_user}
+            likeToHistory={props.likeToHistory}
         />);
     }
 

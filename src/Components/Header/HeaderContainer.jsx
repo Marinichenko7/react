@@ -7,9 +7,7 @@ import { connect } from 'react-redux';
 class HeaderContainer extends React.Component {
 
     componentDidMount() {
-        setTimeout(() => {
-            this.props.authUserThunk()
-        }, 1500)
+        this.props.authUserThunk()
     }
     render() {
         return (
@@ -20,8 +18,8 @@ class HeaderContainer extends React.Component {
 
 let mapStateToProps = (state) => {
     return {
-        login: state.auth.login,
-        authDone: state.auth.isAuth
+        login: state.auth.data.login,
+        isAuth: state.auth.isAuth
     }
 }
 

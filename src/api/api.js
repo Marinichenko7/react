@@ -17,27 +17,16 @@ export const UsersAPI = {
     followUser(id) {
         return (
             instance.patch(`users/${id}`, { "following": true })
-                .then(responce => {
-
-                    return responce
-                })
         )
     },
     unfollowUser(id) {
         return (
             instance.patch(`users/${id}`, { "following": false })
-                .then(responce => {
-
-                    return responce
-                })
         )
     },
     getUser(id) {
         return (
             instance.get(`users/${id ? id : "1"}`)
-                .then(responce => {
-                    return responce
-                })
         )
     }
 }
@@ -45,9 +34,6 @@ export const PostsAPI = {
     getPosts() {
         return (
             instance.get(`posts`)
-                .then(responce => {
-                    return responce
-                })
         )
     },
     addPost(text) {
@@ -55,17 +41,11 @@ export const PostsAPI = {
 
         return (
             instance.post(`posts`, { message: text, date: dateAction, like_count: 0, share_count: 0, likes: [] })
-                .then(responce => {
-                    return responce
-                })
         )
     },
-    likePost(id_post, likes, id_user) {
+    likePost(id_post, like, id_user) {
         return (
-            instance.patch(`posts/${id_post}`, { like_count: likes, likes: [id_user] })
-                .then(responce => {
-                    return responce
-                })
+            instance.patch(`posts/${id_post}`, { like_count: like + 1, likes: [id_user] })
         )
     }
 }
@@ -73,6 +53,11 @@ export const AuthAPI = {
     auth(login, pass) {
         return (
             instance.get(`auth`)
+        )
+    },
+    likedPosts(id_post){
+        return(
+            instance.patch(`auth`, { likedPosts: [id_post] } )
         )
     }
 }

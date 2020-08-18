@@ -41,27 +41,18 @@ const messagesProducer = (state = initialState, action) => {
                 ],
                 newMessage: ''
             }
-
-        //stateCopy.messages = [...state.messages];
-        //stateCopy.messages.push(objMessage);
-        //stateCopy.newMessage = '';
-        //return stateCopy;
-
         case UPDATE_TEXT_MESSAGE:
             return {
                 ...state,
                 newMessage: action.value
             }
-        //stateCopy.newMessage = action.value;
-        //return stateCopy;
-
         default:
             return state;
     }
 }
 
-export const sendMessageAction = () => ({ type: SEND_MESSAGE });
-export const updateTextMessageAction = (text) => ({ type: UPDATE_TEXT_MESSAGE, value: text });
+export const sendMessage = () => ({ type: SEND_MESSAGE });
+export const updateTextMessage = (text) => ({ type: UPDATE_TEXT_MESSAGE, value: text });
 
 
 export default messagesProducer;

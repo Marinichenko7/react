@@ -11,7 +11,7 @@ const MessageSend = (props) => {
 
     let onChangeMessage = () => {
         let value = valueInput.current.value;
-        props.changeMessage(value);
+        props.updateTextMessage(value);
     }
 
     return (

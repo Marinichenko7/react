@@ -11,6 +11,7 @@ const DISABLE_POSTING = "DISABLE_POSTING";
 const DISABLE_LIKING = "DISABLE_LIKING";
 const LIKE_POST = "LIKE_POST";
 
+
 let initialState = {
     profileData: {},
     profilePosts: {},
@@ -119,6 +120,7 @@ export const toggleDisableLiking = (succes, id_post) => ({ type: DISABLE_LIKING,
 export const likePostAction = (id_post) => ({ type: LIKE_POST, id_post });
 
 
+
 export const getUser = (user_id) => {
     return (dispatch) => {
         dispatch(togglePreloderUser(true, user_id))
@@ -160,13 +162,12 @@ export const addPost = (text) => {
     }
 }
 
-export const likePost = (id_post, likes, id_user) => {
+export const likePost = (id_post, like, id_user) => {
     return (dispatch) => {
 
-        
         dispatch(toggleDisableLiking(true, id_post))
         
-        PostsAPI.likePost(id_post, likes, id_user)
+        PostsAPI.likePost(id_post, like, id_user)
             .then(responce => {
                 if (responce.status === 200) {
                     

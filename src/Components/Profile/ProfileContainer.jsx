@@ -1,13 +1,16 @@
 import React from 'react';
 import { updatePostAction, clearProfileData, getUser, getPosts, addPost, likePostAction, likePost } from '../../redux/profileReducer';
+import { likeToHistory } from "../../redux/authReducer";
 import Profile from './Profile';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import { withAuthRedirect } from "../../hoc/withAuthRedirect";
+import { compose } from "redux";
 
 class ProfileContainer extends React.Component {
 
     componentDidMount() {
-        
+
         this.props.getUser(this.props.match.params.user_id)
         this.props.getPosts()
     }
@@ -28,20 +31,12 @@ let mapStateToProps = (state) => {
         toggleFetchPostsData: state.profilePage.toggleFetchPostsData,
         disabledPosting: state.profilePage.disabledPosting,
         disabledLiking: state.profilePage.disabledLiking,
-        id_user: state.auth.id_user
+        id_user: state.auth.data.id
     }
 }
 
-let ProfileContainerRouter = withRouter(ProfileContainer);
-
-export default connect(mapStateToProps,
-    {
-        updatePostAction,
-        clearProfileData,
-        getUser,
-        getPosts,
-        addPost,
-        likePostAction,
-        likePost
-
-     })(ProfileContainerRouter);
+export default compose(
+    withAuthRedirect,
+    withRouter,
+    connect(mapStateToProps, { updatePostAction, clearProfileData, getUser, getPosts, addPost, likePostAction, likePost, likeToHistory })
+)(ProfileContainer)

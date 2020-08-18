@@ -4,7 +4,6 @@ import DialogsItem from './DialogsItem/DialogsItem';
 import MessagesItem from './MessagesItem/MessagesItem';
 import MessageSend from './MessageSend/MessageSend';
 
-
 const Dialogs = (props) => {
     
     let allDialogs = props.dialogs.map( (d) => <DialogsItem key={d.id} id={d.id} sender={d.sender} />);
@@ -21,7 +20,7 @@ const Dialogs = (props) => {
                     { allMessages }
                 </div>
                 <MessageSend newMessage={props.newMessage}
-                            changeMessage={props.changeMessage}
+                            updateTextMessage={props.updateTextMessage}
                             sendMessage={props.sendMessage} />
             </div>
         </div>
