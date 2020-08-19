@@ -1,0 +1,11 @@
+.status_text{
+    color: #1c3517;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: underline;
+    line-height: 1.45;
+    &:hover{
+        text-shadow: 1px 1px 2px black;
+        text-decoration: none;
+    }
+}

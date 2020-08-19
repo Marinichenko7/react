@@ -1,5 +1,5 @@
 import React from 'react';
-import { updatePostAction, clearProfileData, getUser, getPosts, addPost, likePostAction, likePost } from '../../redux/profileReducer';
+import { updatePostAction, clearProfileData, getUser, getPosts, addPost, likePostAction, likePost, changeStatus } from '../../redux/profileReducer';
 import { likeToHistory } from "../../redux/authReducer";
 import Profile from './Profile';
 import { connect } from 'react-redux';
@@ -30,13 +30,12 @@ let mapStateToProps = (state) => {
         toggleFetchInfoUser: state.profilePage.toggleFetchInfoUser,
         toggleFetchPostsData: state.profilePage.toggleFetchPostsData,
         disabledPosting: state.profilePage.disabledPosting,
-        disabledLiking: state.profilePage.disabledLiking,
-        id_user: state.auth.data.id
+        disabledLiking: state.profilePage.disabledLiking
     }
 }
 
 export default compose(
     withAuthRedirect,
     withRouter,
-    connect(mapStateToProps, { updatePostAction, clearProfileData, getUser, getPosts, addPost, likePostAction, likePost, likeToHistory })
+    connect(mapStateToProps, { updatePostAction, clearProfileData, getUser, getPosts, addPost, likePostAction, likePost, likeToHistory, changeStatus })
 )(ProfileContainer)

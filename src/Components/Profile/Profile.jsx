@@ -22,14 +22,13 @@ const Profile = (props) => {
             likePostAction={props.likePostAction}
             likePost={props.likePost}
             disabledLiking={props.disabledLiking}
-            id_user={props.id_user}
             likeToHistory={props.likeToHistory}
         />);
     }
 
     return (
         <div>
-            {props.toggleFetchInfoUser ? <Preloader /> : <ProfileInfo profileData={props.profileData} />}
+            {props.toggleFetchInfoUser ? <Preloader /> : <ProfileInfo profileData={props.profileData} changeStatus={props.changeStatus}/>}
 
             <Posting
                 disabledPosting={props.disabledPosting}

@@ -30,6 +30,13 @@ export const UsersAPI = {
         )
     }
 }
+export const ProfileAPI = {
+    changeUserStatus(id, status) {
+        return(
+            instance.patch(`users/${id}`, { status: status } )
+        )
+    }
+}
 export const PostsAPI = {
     getPosts() {
         return (
