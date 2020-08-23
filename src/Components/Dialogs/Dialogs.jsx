@@ -5,23 +5,24 @@ import MessagesItem from './MessagesItem/MessagesItem';
 import MessageSend from './MessageSend/MessageSend';
 
 const Dialogs = (props) => {
-    
-    let allDialogs = props.dialogs.map( (d) => <DialogsItem key={d.id} id={d.id} sender={d.sender} />);
-    let allMessages = props.messages.map( (m) => <MessagesItem key={m.id} id={m.id} sender={m.sender} text ={m.text} date={m.date} />);
+
+    let allDialogs = props.dialogs.map((d) => <DialogsItem key={d.id} id={d.id} sender={d.sender} />);
+    let allMessages = props.messages.map((m) => <MessagesItem key={m.id} id={m.id} sender={m.sender} text={m.text} date={m.date} />);
 
 
     return (
         <div className={st.columns_dialogs}>
             <div className={st.column_dialogs}>
-                { allDialogs }
+                {allDialogs}
             </div>
             <div className={st.column_messages}>
                 <div className={st.block_message}>
-                    { allMessages }
+                    {allMessages}
                 </div>
-                <MessageSend newMessage={props.newMessage}
-                            updateTextMessage={props.updateTextMessage}
-                            sendMessage={props.sendMessage} />
+
+                <MessageSend sendMessage={props.sendMessage} />
+
+
             </div>
         </div>
     )

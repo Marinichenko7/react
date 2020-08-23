@@ -32,10 +32,7 @@ const Profile = (props) => {
 
             <Posting
                 disabledPosting={props.disabledPosting}
-                newPost={props.newPost}
-                changePost={props.updatePostAction}
                 addPost={props.addPost}
-
             />
 
             <div className={st.posts}>

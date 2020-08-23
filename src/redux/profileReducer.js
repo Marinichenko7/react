@@ -1,7 +1,6 @@
 import { UsersAPI, PostsAPI, ProfileAPI } from '../api/api';
 
 const ADD_POST = "ADD-POST";
-const UPDATE_TEXT_POST = "UPDATE-TEXT-NEW-POST";
 const SET_PROFILE_USER = "SET_PROFILE_USER";
 const TOGGLE_PRELODER_USER = "TOGGLE_PRELODER_USER";
 const TOGGLE_PRELODER_POSTS = "TOGGLE_PRELODER_POSTS";
@@ -31,23 +30,16 @@ const profileReducer = (state = initialState, action) => {
             let dateAction = new Date().toLocaleString();
             let objPost = {
                 id: state.posts.length,
-                message: state.newPost,
+                message: action.text,
                 date: dateAction,
                 like_count: 0,
                 share_count: 0
             }
             return {
                 ...state,
-                posts: [...state.posts, objPost],
-                newPost: ''
+                posts: [...state.posts, objPost]
             };
         }
-        case UPDATE_TEXT_POST:
-            return {
-                ...state,
-                newPost: action.value
-
-            }
         case SET_PROFILE_USER: {
             return {
                 ...state,
@@ -113,8 +105,7 @@ const profileReducer = (state = initialState, action) => {
     }
 }
 
-export const addPostAction = () => ({ type: ADD_POST });
-export const updatePostAction = (text) => ({ type: UPDATE_TEXT_POST, value: text });
+export const addPostAction = (text) => ({ type: ADD_POST, text });
 export const setProfileUser = (profileData) => ({ type: SET_PROFILE_USER, profileData });
 export const setProfilePosts = (postsData) => ({ type: SET_PROFILE_POSTS, postsData });
 export const togglePreloderUser = (isFetching) => ({ type: TOGGLE_PRELODER_USER, isFetching });
@@ -159,7 +150,7 @@ export const addPost = (text) => {
             PostsAPI.addPost(text)
                 .then(responce => {
                     if (responce.status === 201) {
-                        dispatch(addPostAction())
+                        dispatch(addPostAction(text))
                         dispatch(toggleDisablePosting(false))
                     }
                 })

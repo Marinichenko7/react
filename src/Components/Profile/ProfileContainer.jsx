@@ -25,7 +25,6 @@ class ProfileContainer extends React.Component {
 let mapStateToProps = (state) => {
     return {
         posts: state.profilePage.posts,
-        newPost: state.profilePage.newPost,
         profileData: state.profilePage.profileData,
         toggleFetchInfoUser: state.profilePage.toggleFetchInfoUser,
         toggleFetchPostsData: state.profilePage.toggleFetchPostsData,
@@ -37,5 +36,5 @@ let mapStateToProps = (state) => {
 export default compose(
     withAuthRedirect,
     withRouter,
-    connect(mapStateToProps, { updatePostAction, clearProfileData, getUser, getPosts, addPost, likePostAction, likePost, likeToHistory, changeStatus })
+    connect(mapStateToProps, { clearProfileData, getUser, getPosts, addPost, likePostAction, likePost, likeToHistory, changeStatus })
 )(ProfileContainer)

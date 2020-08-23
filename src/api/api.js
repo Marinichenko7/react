@@ -32,8 +32,8 @@ export const UsersAPI = {
 }
 export const ProfileAPI = {
     changeUserStatus(id, status) {
-        return(
-            instance.patch(`users/${id}`, { status: status } )
+        return (
+            instance.patch(`users/${id}`, { status: status })
         )
     }
 }
@@ -57,14 +57,29 @@ export const PostsAPI = {
     }
 }
 export const AuthAPI = {
-    auth(login, pass) {
+    auth() {
         return (
             instance.get(`auth`)
         )
     },
-    likedPosts(id_post){
+    registeredMe(login, pass) {
+        return (
+            instance.post(`me`, { login, pass })
+        )
+    },
+    isMe() {
+        return (
+            instance.get(`me`)
+        )
+    },
+    logOutMe() {
         return(
-            instance.patch(`auth`, { likedPosts: [id_post] } )
+            instance.post(`me`)
+        )
+    },
+    likedPosts(id_post) {
+        return (
+            instance.patch(`auth`, { likedPosts: [id_post] })
         )
     }
 }

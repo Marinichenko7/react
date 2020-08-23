@@ -1,24 +1,28 @@
 import React from 'react';
 import st from "./Posting.module.css";
+import { Formik, Form, Field } from "formik";
+
 
 const Posting = (props) => {
-
-    let inputValue = React.createRef();
 
     return (
         <div className={st.user_add_post}>
             <div className={st.title_block}>My posts</div>
-            <input disabled={props.disabledPosting} onChange={
 
-                (e) => props.changePost(e.target.value)
-
-            } ref={inputValue} className={st.user_write_news} type="text" value={props.newPost}></input>
-
-            <button disabled={props.disabledPosting} onClick={() => {
-
-                props.addPost(props.newPost)
-
-            }} className={st.send_news} type="button">Send</button>
+            <Formik
+                initialValues={{ post: '' }}
+                onSubmit={(values, { setSubmitting }) => {
+                    setSubmitting(false)
+                    props.addPost(values.post)
+                }}
+            >
+                {({ isSubmitting }) => (
+                    <Form>
+                        <Field type="text" name="post" placeholder="Text Post" className={st.user_write_news} disabled={props.disabledPosting} />
+                        <button disabled={isSubmitting} className={st.send_news} disabled={props.disabledPosting}>Send</button>
+                    </Form>
+                )}
+            </Formik>
         </div>
 
     )

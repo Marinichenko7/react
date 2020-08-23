@@ -7,13 +7,6 @@ import { BrowserRouter } from 'react-router-dom';
 import store from './redux/redux-store';
 import { Provider } from 'react-redux';
 
-/*
-import express from 'express';
-const application = express();
-application.listen(3000, () => {
-  console.log("Server listening");
-})
-*/ 
 
 ReactDOM.render(
   <BrowserRouter>

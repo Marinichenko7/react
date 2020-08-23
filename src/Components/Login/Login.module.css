@@ -1,3 +1,9 @@
 .login_block{
     font-size: 18px;
 }
+.error_input{
+    border: 2px solid red;
+}
+.approved_input{
+    border: 1px solid black;
+}

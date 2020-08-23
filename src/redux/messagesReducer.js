@@ -16,8 +16,7 @@ let initialState = {
         { id: 4, sender: 'Vitya', text: 'Hello! I`m fine. Now i have a dinner. And you?', date: '3 sept 18:33' },
         { id: 5, sender: 'Kolya', text: 'Hi! Whats up?', date: '3 sept 18:31' },
         { id: 6, sender: 'Vitya', text: 'Hello! I`m fine. Now i have a dinner. And you?', date: '3 sept 18:33' }
-    ],
-    newMessage: ''
+    ]
 }
 
 const messagesProducer = (state = initialState, action) => {
@@ -29,30 +28,20 @@ const messagesProducer = (state = initialState, action) => {
             let objMessage = {
                 id: state.messages.length,
                 sender: 'User',
-                text: state.newMessage,
+                text: action.text,
                 date: dateAction
             }
 
             return {
                 ...state,
-                messages: [
-                    ...state.messages,
-                    objMessage
-                ],
-                newMessage: ''
-            }
-        case UPDATE_TEXT_MESSAGE:
-            return {
-                ...state,
-                newMessage: action.value
+                messages: [ ...state.messages, objMessage ]
             }
         default:
             return state;
     }
 }
 
-export const sendMessage = () => ({ type: SEND_MESSAGE });
-export const updateTextMessage = (text) => ({ type: UPDATE_TEXT_MESSAGE, value: text });
+export const sendMessage = (text) => ({ type: SEND_MESSAGE, text });
 
 
 export default messagesProducer;
