@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { withAuthRedirect } from "../../hoc/withAuthRedirect";
 import { compose } from "redux";
+import { getUsersPosts, getProfileData, getToggleFetchInfoUser, getToggleFetchPostsData, getDisabledPosting, getDisabledLiking } from './../../redux/profile-selectors';
 
 class ProfileContainer extends React.Component {
 
@@ -24,12 +25,12 @@ class ProfileContainer extends React.Component {
 
 let mapStateToProps = (state) => {
     return {
-        posts: state.profilePage.posts,
-        profileData: state.profilePage.profileData,
-        toggleFetchInfoUser: state.profilePage.toggleFetchInfoUser,
-        toggleFetchPostsData: state.profilePage.toggleFetchPostsData,
-        disabledPosting: state.profilePage.disabledPosting,
-        disabledLiking: state.profilePage.disabledLiking
+        posts: getUsersPosts(state),
+        profileData: getProfileData(state),
+        toggleFetchInfoUser: getToggleFetchInfoUser(state),
+        toggleFetchPostsData: getToggleFetchPostsData(state),
+        disabledPosting: getDisabledPosting(state),
+        disabledLiking: getDisabledLiking(state)
     }
 }
 
